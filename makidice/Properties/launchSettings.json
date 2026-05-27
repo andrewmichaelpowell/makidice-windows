@@ -1,6 +1,6 @@
 {
   "profiles": {
-    "diecast": {
+    "makidice": {
       "commandName": "Project",
       "nativeDebugging": false
     }

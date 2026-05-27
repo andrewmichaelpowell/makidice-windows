@@ -136,7 +136,7 @@ namespace makidice
         #endregion
 
         private System.Windows.Forms.Label lblDice;
-        private System.Windows.Forms.TextBox tbƒ;
+        private System.Windows.Forms.TextBox tbDice;
         private System.Windows.Forms.Label lblDifficulty;
         private System.Windows.Forms.TextBox tbDifficulty;
         private System.Windows.Forms.Button btnRoll;
