@@ -216,6 +216,5 @@ namespace makidice
             RightValue = "";
             this.lblResult.Text = "";
         }
-
     }
 }
