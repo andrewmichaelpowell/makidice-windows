@@ -18,38 +18,38 @@ namespace makidice
                 {
                     if (int.Parse(tbDice.Text) < 100 && int.Parse(tbDifficulty.Text) < 100)
                     {
-                        int Dice = int.Parse(tbDice.Text);
-                        int Difficulty = int.Parse(tbDifficulty.Text);
-                        int Successes = 0;
-                        int Result;
+                        int dice = int.Parse(tbDice.Text);
+                        int difficulty = int.Parse(tbDifficulty.Text);
+                        int successes = 0;
+                        int result;
                         Random Roll = new Random();
-                        for (int i = 0; i < Dice; i++)
+                        for (int i = 0; i < dice; i++)
                         {
-                            Result = Roll.Next(10) + 1;
-                            if (Result == 1)
+                            result = Roll.Next(10) + 1;
+                            if (result == 1)
                             {
-                                Successes = Successes - 1;
+                                successes = successes - 1;
                             }
-                            else if (Result == 10)
+                            else if (result == 10)
                             {
-                                Successes = Successes + 2;
+                                successes = successes + 2;
                             }
-                            else if (Result >= Difficulty)
+                            else if (result >= difficulty)
                             {
-                                Successes = Successes + 1;
+                                successes = successes + 1;
                             }
                         }
-                        if (Successes < -9)
+                        if (successes < -9)
                         {
-                            this.lblResult.Text = Successes.ToString();
+                            this.lblResult.Text = successes.ToString();
                         }
-                        else if (Successes > -1 && Successes < 10)
+                        else if (successes > -1 && successes < 10)
                         {
-                            this.lblResult.Text = "  " + Successes.ToString();
+                            this.lblResult.Text = "  " + successes.ToString();
                         }
                         else
                         {
-                            this.lblResult.Text = " " + Successes.ToString();
+                            this.lblResult.Text = " " + successes.ToString();
                         }
                     }
                 }

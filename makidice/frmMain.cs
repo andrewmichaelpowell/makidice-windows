@@ -13,187 +13,187 @@ namespace makidice
             InitializeComponent();
         }
 
-        int Side = 1;
-        int Reset = 1;
-        string LeftValue = "";
-        string RightValue = "";
+        int editSide = 1;
+        int resetInput = 1;
+        string leftValue = "";
+        string rightValue = "";
 
-        private void QuickRoll(int DiceType)
+        private void quickRoll(int diceType)
         {
-            Random Roll = new Random();
-            int Result = Roll.Next(DiceType) + 1;
-            this.lblResult.Text = Result.ToString();
+            Random roll = new Random();
+            int resultValue = roll.Next(diceType) + 1;
+            this.lblResult.Text = resultValue.ToString();
 
         }
 
         private void btn1d4_Click(object sender, EventArgs e)
         {
-            QuickRoll(4);
+            quickRoll(4);
         }
 
         private void btn1d6_Click(object sender, EventArgs e)
         {
-            QuickRoll(6);
+            quickRoll(6);
         }
 
         private void btn1d8_Click(object sender, EventArgs e)
         {
-            QuickRoll(8);
+            quickRoll(8);
         }
 
         private void btn1d10_Click(object sender, EventArgs e)
         {
-            QuickRoll(10);
+            quickRoll(10);
         }
 
         private void btn1d12_Click(object sender, EventArgs e)
         {
-            QuickRoll(12);
+            quickRoll(12);
         }
 
         private void btn1d20_Click(object sender, EventArgs e)
         {
-            QuickRoll(20);
+            quickRoll(20);
         }
 
         private void btn1d100_Click(object sender, EventArgs e)
         {
-            QuickRoll(100);
+            quickRoll(100);
         }
 
-        private void SetRight(int ButtonValue)
+        private void setRight(int buttonValue)
         {
-            if (RightValue == "")
+            if (rightValue == "")
             {
-                RightValue = RightValue + ButtonValue.ToString();
-                lblResult.Text = LeftValue + "d" + RightValue;
+                rightValue = rightValue + buttonValue.ToString();
+                lblResult.Text = leftValue + "d" + rightValue;
             }
-            else if (int.Parse(RightValue) < 1000)
+            else if (int.Parse(rightValue) < 1000)
             {
-                RightValue = RightValue + ButtonValue.ToString();
-                lblResult.Text = LeftValue + "d" + RightValue;
-            }
-        }
-
-        private void SetLeft(int ButtonValue)
-        {
-            if (Reset == 1)
-            {
-                LeftValue = "";
-                RightValue = "";
-                Reset = 0;
-            }
-            if (LeftValue == "")
-            {
-                LeftValue = LeftValue + ButtonValue.ToString();
-                lblResult.Text = LeftValue;
-            }
-            else if (int.Parse(LeftValue) < 1000)
-            {
-                LeftValue = LeftValue + ButtonValue.ToString();
-                lblResult.Text = LeftValue;
+                rightValue = rightValue + buttonValue.ToString();
+                lblResult.Text = leftValue + "d" + rightValue;
             }
         }
 
-        private void AddValueToSide(int ButtonValue)
+        private void setLeft(int buttonValue)
         {
-            if (Side == 1)
+            if (resetInput == 1)
             {
-                SetLeft(ButtonValue);
+                leftValue = "";
+                rightValue = "";
+                resetInput = 0;
             }
-            if (Side == 2)
+            if (leftValue == "")
             {
-                SetRight(ButtonValue);
+                leftValue = leftValue + buttonValue.ToString();
+                lblResult.Text = leftValue;
+            }
+            else if (int.Parse(leftValue) < 1000)
+            {
+                leftValue = leftValue + buttonValue.ToString();
+                lblResult.Text = leftValue;
+            }
+        }
+
+        private void appendDigit(int buttonValue)
+        {
+            if (editSide == 1)
+            {
+                setLeft(buttonValue);
+            }
+            if (editSide == 2)
+            {
+                setRight(buttonValue);
             }
         }
 
         private void btnD_Click(object sender, EventArgs e)
         {
-            if (Side == 1 && Reset == 0)
+            if (editSide == 1 && resetInput == 0)
             {
-                Side = 2;
-                lblResult.Text = LeftValue + "d";
+                editSide = 2;
+                lblResult.Text = leftValue + "d";
             }
         }
 
         private void btnRoll_Click(object sender, EventArgs e)
         {
-            if (LeftValue != "" && RightValue != "")
+            if (leftValue != "" && rightValue != "")
             {
-                int LeftValueInt = int.Parse(LeftValue);
-                int RightValueInt = int.Parse(RightValue);
-                int Result = 0;
-                Random RollValue = new Random();
-                for (int i = 0; i < LeftValueInt; i++)
+                int leftValueInt = int.Parse(leftValue);
+                int rightValueInt = int.Parse(rightValue);
+                int resultValue = 0;
+                Random roll = new Random();
+                for (int i = 0; i < leftValueInt; i++)
                 {
-                    Result = Result + RollValue.Next(RightValueInt) + 1;
+                    resultValue = resultValue + roll.Next(rightValueInt) + 1;
                 }
-                this.lblResult.Text = Result.ToString();
-                Side = 1;
-                Reset = 1;
+                this.lblResult.Text = resultValue.ToString();
+                editSide = 1;
+                resetInput = 1;
 
             }
         }
 
         private void btn1_Click(object sender, EventArgs e)
         {
-            AddValueToSide(1);
+            appendDigit(1);
         }
 
         private void btn2_Click(object sender, EventArgs e)
         {
-            AddValueToSide(2);
+            appendDigit(2);
         }
 
         private void btn3_Click(object sender, EventArgs e)
         {
-            AddValueToSide(3);
+            appendDigit(3);
         }
 
         private void btn4_Click(object sender, EventArgs e)
         {
-            AddValueToSide(4);
+            appendDigit(4);
         }
 
         private void btn5_Click(object sender, EventArgs e)
         {
-            AddValueToSide(5);
+            appendDigit(5);
         }
 
         private void btn6_Click(object sender, EventArgs e)
         {
-            AddValueToSide(6);
+            appendDigit(6);
         }
 
         private void btn7_Click(object sender, EventArgs e)
         {
-            AddValueToSide(7);
+            appendDigit(7);
         }
 
         private void btn8_Click(object sender, EventArgs e)
         {
-            AddValueToSide(8);
+            appendDigit(8);
         }
 
         private void btn9_Click(object sender, EventArgs e)
         {
-            AddValueToSide(9);
+            appendDigit(9);
         }
 
         private void btn0_Click(object sender, EventArgs e)
         {
-            if (Side == 1)
+            if (editSide == 1)
             {
-                if (LeftValue != "" && Reset == 0)
+                if (leftValue != "" && resetInput == 0)
                 {
-                    AddValueToSide(0);
+                    appendDigit(0);
                 }
             }
-            if (Side == 2)
+            if (editSide == 2)
             {
-                if (RightValue != "" && Reset == 0)
+                if (rightValue != "" && resetInput == 0)
                 {
-                    AddValueToSide(0);
+                    appendDigit(0);
                 }
             }
 
@@ -211,9 +211,9 @@ namespace makidice
 
         private void btnClear_Click(object sender, EventArgs e)
         {
-            Side = 1;
-            LeftValue = "";
-            RightValue = "";
+            editSide = 1;
+            leftValue = "";
+            rightValue = "";
             this.lblResult.Text = "";
         }
     }
