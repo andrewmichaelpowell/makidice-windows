@@ -1,25 +1,19 @@
 using System.Windows.Forms;
 using System.Reflection;
 
-namespace makidice
-{
-    public partial class frmAbout : Form
-    {
-        public frmAbout()
-        {
+namespace makidice {
+    public partial class frmAbout : Form {
+        public frmAbout() {
             InitializeComponent();
             this.lblApplication.Text = AssemblyTitle;
             this.lblVersion.Text = "Version " + AssemblyVersion;
             this.lblURL.Text = "github.com/andrewmichaelpowell";
         }
 
-        public string AssemblyTitle
-        {
-            get
-            {
+        public string AssemblyTitle {
+            get {
                 object[] attributes = Assembly.GetExecutingAssembly().GetCustomAttributes(typeof(AssemblyTitleAttribute), false);
-                if (attributes.Length > 0)
-                {
+                if (attributes.Length > 0) {
                     AssemblyTitleAttribute titleAttribute = (AssemblyTitleAttribute)attributes[0];
                     if (titleAttribute.Title != "")
                         return titleAttribute.Title;
@@ -28,10 +22,8 @@ namespace makidice
             }
         }
 
-        public string AssemblyVersion
-        {
-            get
-            {
+        public string AssemblyVersion {
+            get {
                 return Assembly.GetExecutingAssembly().GetName().Version.ToString();
             }
         }

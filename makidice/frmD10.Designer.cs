@@ -1,20 +1,8 @@
-namespace makidice
-{
-    partial class frmD10
-    {
-        /// <summary>
-        /// Required designer variable.
-        /// </summary>
+namespace makidice {
+    partial class frmD10 {
         private System.ComponentModel.IContainer components = null;
-
-        /// <summary>
-        /// Clean up any resources being used.
-        /// </summary>
-        /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
-        protected override void Dispose(bool disposing)
-        {
-            if (disposing && (components != null))
-            {
+       protected override void Dispose(bool disposing) {
+            if (disposing && (components != null)) {
                 components.Dispose();
             }
             base.Dispose(disposing);
@@ -22,12 +10,7 @@ namespace makidice
 
         #region Windows Form Designer generated code
 
-        /// <summary>
-        /// Required method for Designer support - do not modify
-        /// the contents of this method with the code editor.
-        /// </summary>
-        private void InitializeComponent()
-        {
+        private void InitializeComponent() {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmD10));
             lblDice = new Label();
             tbDice = new TextBox();
@@ -37,9 +20,6 @@ namespace makidice
             lblSuccesses = new Label();
             lblResult = new Label();
             SuspendLayout();
-            // 
-            // lblDice
-            // 
             lblDice.AutoSize = true;
             lblDice.Location = new Point(16, 25);
             lblDice.Margin = new Padding(4, 0, 4, 0);
@@ -47,17 +27,11 @@ namespace makidice
             lblDice.Size = new Size(65, 20);
             lblDice.TabIndex = 0;
             lblDice.Text = "Dice";
-            // 
-            // tbDice
-            // 
             tbDice.Location = new Point(87, 20);
             tbDice.Margin = new Padding(4, 5, 4, 5);
             tbDice.Name = "tbDice";
             tbDice.Size = new Size(33, 27);
             tbDice.TabIndex = 1;
-            // 
-            // lblDifficulty
-            // 
             lblDifficulty.AutoSize = true;
             lblDifficulty.Location = new Point(16, 66);
             lblDifficulty.Margin = new Padding(4, 0, 4, 0);
@@ -65,17 +39,11 @@ namespace makidice
             lblDifficulty.Size = new Size(69, 20);
             lblDifficulty.TabIndex = 2;
             lblDifficulty.Text = "Difficulty";
-            // 
-            // tbDifficulty
-            // 
             tbDifficulty.Location = new Point(87, 62);
             tbDifficulty.Margin = new Padding(4, 5, 4, 5);
             tbDifficulty.Name = "tbDifficulty";
             tbDifficulty.Size = new Size(33, 27);
             tbDifficulty.TabIndex = 3;
-            // 
-            // btnRoll
-            // 
             btnRoll.Location = new Point(141, 17);
             btnRoll.Margin = new Padding(4, 5, 4, 5);
             btnRoll.Name = "btnRoll";
@@ -84,9 +52,6 @@ namespace makidice
             btnRoll.Text = "Roll";
             btnRoll.UseVisualStyleBackColor = true;
             btnRoll.Click += btnRoll_Click;
-            // 
-            // lblSuccesses
-            // 
             lblSuccesses.AutoSize = true;
             lblSuccesses.Font = new Font("Segoe UI", 15.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
             lblSuccesses.Location = new Point(13, 98);
@@ -95,9 +60,6 @@ namespace makidice
             lblSuccesses.Size = new Size(155, 31);
             lblSuccesses.TabIndex = 5;
             lblSuccesses.Text = "Successes:";
-            // 
-            // lblResult
-            // 
             lblResult.AutoSize = true;
             lblResult.Font = new Font("Segoe UI", 15.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
             lblResult.Location = new Point(175, 98);
@@ -105,9 +67,6 @@ namespace makidice
             lblResult.Name = "lblResult";
             lblResult.Size = new Size(0, 31);
             lblResult.TabIndex = 6;
-            // 
-            // frmD10
-            // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(253, 148);
@@ -130,7 +89,6 @@ namespace makidice
             Load += frmD10_Load;
             ResumeLayout(false);
             PerformLayout();
-
         }
 
         #endregion
