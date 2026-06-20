@@ -24,7 +24,7 @@ namespace makidice {
 
         public string AssemblyVersion {
             get {
-                return Assembly.GetExecutingAssembly().GetName().Version.ToString();
+                return Assembly.GetExecutingAssembly().GetName().Version?.ToString() ?? "0.0.0.0";
             }
         }
     }
