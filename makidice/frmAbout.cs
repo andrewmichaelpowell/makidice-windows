@@ -18,7 +18,7 @@ namespace makidice {
                     if (titleAttribute.Title != "")
                         return titleAttribute.Title;
                 }
-                return System.IO.Path.GetFileNameWithoutExtension(Assembly.GetExecutingAssembly().Location);
+return System.IO.Path.GetFileNameWithoutExtension(Environment.ProcessPath);
             }
         }
 
