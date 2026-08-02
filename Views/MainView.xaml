@@ -1,0 +1,106 @@
+<UserControl x:Class="MakiDice.Views.MainView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <Grid Margin="16,0,16,0">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+
+        <TextBlock x:Name="ResultText"
+                   Grid.Row="1"
+                   Text=""
+                   FontSize="34"
+                   Foreground="{DynamicResource LabelBrush}"
+                   HorizontalAlignment="Stretch"
+                   TextAlignment="Right"
+                   TextTrimming="CharacterEllipsis"
+                   Margin="0,0,0,8" />
+
+        <StackPanel Grid.Row="2" Margin="0,16,0,32">
+            <UniformGrid Columns="3">
+                <Button Tag="4" Click="QuickRoll_Click" Margin="4" Style="{StaticResource DiceButtonStyle}"
+                        Background="{DynamicResource SecondaryBackgroundBrush}" Foreground="{DynamicResource LabelBrush}"
+                        Content="1d4" />
+                <Button Tag="6" Click="QuickRoll_Click" Margin="4" Style="{StaticResource DiceButtonStyle}"
+                        Background="{DynamicResource SecondaryBackgroundBrush}" Foreground="{DynamicResource LabelBrush}"
+                        Content="1d6" />
+                <Button Tag="8" Click="QuickRoll_Click" Margin="4" Style="{StaticResource DiceButtonStyle}"
+                        Background="{DynamicResource SecondaryBackgroundBrush}" Foreground="{DynamicResource LabelBrush}"
+                        Content="1d8" />
+            </UniformGrid>
+            <UniformGrid Columns="3">
+                <Button Tag="10" Click="QuickRoll_Click" Margin="4" Style="{StaticResource DiceButtonStyle}"
+                        Background="{DynamicResource SecondaryBackgroundBrush}" Foreground="{DynamicResource LabelBrush}"
+                        Content="1d10" />
+                <Button Tag="12" Click="QuickRoll_Click" Margin="4" Style="{StaticResource DiceButtonStyle}"
+                        Background="{DynamicResource SecondaryBackgroundBrush}" Foreground="{DynamicResource LabelBrush}"
+                        Content="1d12" />
+                <Button Tag="20" Click="QuickRoll_Click" Margin="4" Style="{StaticResource DiceButtonStyle}"
+                        Background="{DynamicResource SecondaryBackgroundBrush}" Foreground="{DynamicResource LabelBrush}"
+                        Content="1d20" />
+            </UniformGrid>
+            <UniformGrid Columns="3">
+                <Button Click="Clear_Click" Margin="4" Style="{StaticResource DiceButtonStyle}"
+                        Background="{StaticResource OrangeBrush}" Foreground="White"
+                        Content="Clear" />
+                <Button Tag="100" Click="QuickRoll_Click" Margin="4" Style="{StaticResource DiceButtonStyle}"
+                        Background="{DynamicResource SecondaryBackgroundBrush}" Foreground="{DynamicResource LabelBrush}"
+                        Content="1d100" />
+                <Button Click="OpenD10_Click" Margin="4" Style="{StaticResource DiceButtonStyle}"
+                        Background="{StaticResource TealBrush}" Foreground="White"
+                        Content="D10" />
+            </UniformGrid>
+        </StackPanel>
+
+        <!-- Number pad + d / 0 / Roll -->
+        <StackPanel Grid.Row="3" Margin="0,0,0,32">
+            <UniformGrid Columns="3">
+                <Button Tag="1" Click="Digit_Click" Margin="4" Style="{StaticResource DiceButtonStyle}"
+                        Background="{DynamicResource SecondaryBackgroundBrush}" Foreground="{DynamicResource LabelBrush}"
+                        Content="1" />
+                <Button Tag="2" Click="Digit_Click" Margin="4" Style="{StaticResource DiceButtonStyle}"
+                        Background="{DynamicResource SecondaryBackgroundBrush}" Foreground="{DynamicResource LabelBrush}"
+                        Content="2" />
+                <Button Tag="3" Click="Digit_Click" Margin="4" Style="{StaticResource DiceButtonStyle}"
+                        Background="{DynamicResource SecondaryBackgroundBrush}" Foreground="{DynamicResource LabelBrush}"
+                        Content="3" />
+            </UniformGrid>
+            <UniformGrid Columns="3">
+                <Button Tag="4" Click="Digit_Click" Margin="4" Style="{StaticResource DiceButtonStyle}"
+                        Background="{DynamicResource SecondaryBackgroundBrush}" Foreground="{DynamicResource LabelBrush}"
+                        Content="4" />
+                <Button Tag="5" Click="Digit_Click" Margin="4" Style="{StaticResource DiceButtonStyle}"
+                        Background="{DynamicResource SecondaryBackgroundBrush}" Foreground="{DynamicResource LabelBrush}"
+                        Content="5" />
+                <Button Tag="6" Click="Digit_Click" Margin="4" Style="{StaticResource DiceButtonStyle}"
+                        Background="{DynamicResource SecondaryBackgroundBrush}" Foreground="{DynamicResource LabelBrush}"
+                        Content="6" />
+            </UniformGrid>
+            <UniformGrid Columns="3">
+                <Button Tag="7" Click="Digit_Click" Margin="4" Style="{StaticResource DiceButtonStyle}"
+                        Background="{DynamicResource SecondaryBackgroundBrush}" Foreground="{DynamicResource LabelBrush}"
+                        Content="7" />
+                <Button Tag="8" Click="Digit_Click" Margin="4" Style="{StaticResource DiceButtonStyle}"
+                        Background="{DynamicResource SecondaryBackgroundBrush}" Foreground="{DynamicResource LabelBrush}"
+                        Content="8" />
+                <Button Tag="9" Click="Digit_Click" Margin="4" Style="{StaticResource DiceButtonStyle}"
+                        Background="{DynamicResource SecondaryBackgroundBrush}" Foreground="{DynamicResource LabelBrush}"
+                        Content="9" />
+            </UniformGrid>
+            <UniformGrid Columns="3">
+                <Button Click="PressD_Click" Margin="4" Style="{StaticResource DiceButtonStyle}"
+                        Background="{StaticResource OrangeBrush}" Foreground="White"
+                        Content="d" />
+                <Button Click="Zero_Click" Margin="4" Style="{StaticResource DiceButtonStyle}"
+                        Background="{DynamicResource SecondaryBackgroundBrush}" Foreground="{DynamicResource LabelBrush}"
+                        Content="0" />
+                <Button Click="Roll_Click" Margin="4" Style="{StaticResource DiceButtonStyle}"
+                        Background="{StaticResource OrangeBrush}" Foreground="White"
+                        Content="Roll" />
+            </UniformGrid>
+        </StackPanel>
+    </Grid>
+</UserControl>
