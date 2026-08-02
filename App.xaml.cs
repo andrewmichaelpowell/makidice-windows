@@ -38,6 +38,9 @@ public partial class App : Application
 
     private void ApplyTheme(bool isLight)
     {
+        Resources["WindowBackgroundBrush"] = new SolidColorBrush(
+            isLight ? Colors.White : Colors.Black);
+
         Resources["SecondaryBackgroundBrush"] = new SolidColorBrush(
             isLight ? Color.FromRgb(0xEF, 0xEF, 0xF4) : Color.FromRgb(0x1C, 0x1C, 0x1E));
 

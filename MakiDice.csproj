@@ -13,10 +13,15 @@
     <AssemblyVersion>1.9.2</AssemblyVersion>
     <ApplicationTitle>Maki Dice</ApplicationTitle>
     <Copyright>Copyright 2026 Andrew Powell</Copyright>
+    <ApplicationIcon>Assets\app.ico</ApplicationIcon>
   </PropertyGroup>
 
   <ItemGroup>
     <PackageReference Include="Microsoft.Win32.Registry" Version="5.0.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Assets\app.ico" />
   </ItemGroup>
 
 </Project>
