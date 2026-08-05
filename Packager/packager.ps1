@@ -1,0 +1,3 @@
+& (Get-ChildItem -Path C:\ -Filter MakeAppx.exe -Recurse -ErrorAction SilentlyContinue | Select-Object -First 1).FullName pack /d "C:\Packager\win-x64\publish" /p "C:\Packager\msix\MakiDice_x64.msix"
+& (Get-ChildItem -Path C:\ -Filter MakeAppx.exe -Recurse -ErrorAction SilentlyContinue | Select-Object -First 1).FullName pack /d "C:\Packager\win-arm64\publish" /p "C:\Packager\msix\MakiDice_arm64.msix"
+& (Get-ChildItem -Path C:\ -Filter MakeAppx.exe -Recurse -ErrorAction SilentlyContinue | Select-Object -First 1).FullName bundle /d "C:\Packager\msix" /p "C:\Packager\MakiDice.msixbundle"
