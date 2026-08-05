@@ -4,7 +4,7 @@
         Title="Maki Dice"
         Icon="Assets/app.ico"
         Width="500" Height="780"
-        MinWidth="340" MinHeight="480"
+        MinWidth="500" MinHeight="780"
         Background="{DynamicResource WindowBackgroundBrush}">
     <Grid>
         <ContentControl x:Name="RootContent" />
