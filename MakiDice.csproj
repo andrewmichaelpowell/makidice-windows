@@ -12,7 +12,7 @@
     <AssemblyName>MakiDice</AssemblyName>
     <AssemblyVersion>1.9.3.1</AssemblyVersion>
     <ApplicationTitle>Maki Dice</ApplicationTitle>
-    <Copyright>Copyright 2026 Andrew Powell</Copyright>
+    <Copyright>Copyright © 2026 Andrew Powell</Copyright>
     <ApplicationIcon>Assets\app.ico</ApplicationIcon>
   </PropertyGroup>
 
