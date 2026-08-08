@@ -1,3 +1,6 @@
+# Maki Dice (Windows)
+# github.com/andrewmichaelpowell
+
 param(
     [Parameter(Mandatory = $true)]
     [string]$Master,
