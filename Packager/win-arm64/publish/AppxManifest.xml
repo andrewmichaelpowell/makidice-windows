@@ -7,7 +7,7 @@
     <Identity
         Name="AndrewPowell.MakiDice"
         Publisher="CN=EA508F5B-94C6-49C1-9E55-2FAF44A9213C"
-        Version="1.9.4.0"
+        Version="1.9.5.0"
         ProcessorArchitecture="arm64"/>
     <Properties>
         <DisplayName>Maki Dice</DisplayName>
