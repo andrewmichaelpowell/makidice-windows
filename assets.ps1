@@ -28,9 +28,7 @@ function New-PaddedAsset {
     )
     $Path = Join-Path $OutputDirectory $FileName
     $iconSize = [int]([Math]::Min($CanvasW, $CanvasH) * $FillRatio)
-    & magick $MasterImage -filter Lanczos -resize "${iconSize}x${iconSize}" `
-        -background none -gravity center -extent "${CanvasW}x${CanvasH}" `
-        -define png:compression-level=9 $Path
+    & magick $MasterImage -filter Lanczos -resize "${iconSize}x${iconSize}" -background none -gravity center -extent "${CanvasW}x${CanvasH}" -define png:compression-level=9 $Path
 }
 
 New-SquareAsset "Square44x44Logo.png" 44
