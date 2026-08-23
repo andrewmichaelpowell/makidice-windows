@@ -2,15 +2,9 @@ name: Build Windows Packages
 
 on:
   workflow_dispatch:      # manual trigger button in the Actions tab
-  # push:
-  #   tags:
-  #     - 'v*'              # also trigger on version tags, e.g. v1.9.4
-  # push:
-  #   branches: [ main ]
-  # pull_request:
-  #   branches: [ main ]
-
-
+  push:
+    tags:
+      - 'v*'              # also trigger on version tags, e.g. v1.9.4
 
 jobs:
   package:
@@ -41,7 +35,12 @@ jobs:
         shell: pwsh
         run: |
           $sdkBin = Get-ChildItem "C:\Program Files (x86)\Windows Kits\10\bin" -Directory |
-                    Sort-Object Name -Descending | Select-Object -First 1
+                    Where-Object { $_.Name -match '^\d+\.\d+\.\d+\.\d+$' } |
+                    Sort-Object { [version]$_.Name } -Descending |
+                    Select-Object -First 1
+
+          if (-not $sdkBin) { throw "No versioned Windows SDK bin folder found under C:\Program Files (x86)\Windows Kits\10\bin" }
+
           $makepri = Join-Path $sdkBin.FullName "x64\MakePri.exe"
           $makeappx = Join-Path $sdkBin.FullName "x64\MakeAppx.exe"
 
