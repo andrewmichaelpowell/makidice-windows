@@ -14,7 +14,7 @@
     <AssemblyVersion>1.9.6.0</AssemblyVersion>
     <ApplicationTitle>Maki Dice</ApplicationTitle>
     <Copyright>Copyright © 2026 Andrew Powell</Copyright>
-    <ApplicationIcon>Assets\app.ico</ApplicationIcon>
+    <ApplicationIcon>Assets\Icon.ico</ApplicationIcon>
   </PropertyGroup>
 
   <ItemGroup>
@@ -22,7 +22,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Resource Include="Assets\app.ico" />
+    <Resource Include="Assets\Icon.ico" />
   </ItemGroup>
 
 </Project>

@@ -4,7 +4,7 @@
 # brew install ghostscript
 # brew install imagemagick
 
-$MasterImage = "./Packages/Resources/MakiDice.png"
+$MasterImage = "./Resources/Icon.png"
 $OutputDirectory = "./Packages/Assets"
 
 if (Test-Path $OutputDirectory) { Remove-Item -Recurse -Force $OutputDirectory }
