@@ -79,7 +79,6 @@ jobs:
         with:
           name: makidice-windows-msixbundle
           path: .\bundle\makidice-windows.msixbundle
-          if-no-files-found: error
 
       - name: Clean Build
         shell: pwsh
@@ -106,11 +105,9 @@ jobs:
         with:
           name: makidice-windows-arm64
           path: .\bin\makidice-windows-arm64.zip
-          if-no-files-found: error
 
       - name: Upload x64 Artifact
         uses: actions/upload-artifact@v6
         with:
           name: makidice-windows-x64
           path: .\bin\makidice-windows-x64.zip
-          if-no-files-found: error
