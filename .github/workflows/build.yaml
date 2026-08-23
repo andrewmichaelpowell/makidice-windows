@@ -13,13 +13,14 @@ on:
 jobs:
   package:
     runs-on: windows-2022
+    # runs-on: windows-latest
 
     steps:
       - name: Checkout
         uses: actions/checkout@v5
 
       - name: Configure .NET
-        uses: actions/setup-dotnet@v4
+        uses: actions/setup-dotnet@v6
         with:
           dotnet-version: '9.0.x'
 
@@ -29,7 +30,7 @@ jobs:
       - name: Build x64
         run: dotnet publish -c Release -r win-x64 --self-contained true
 
-      - name: Configure MakeAppx & MakePri
+      - name: Configure Tools
         id: sdk
         shell: pwsh
         run: |
@@ -44,7 +45,7 @@ jobs:
           "makepri=$makepri"   >> $env:GITHUB_OUTPUT
           "makeappx=$makeappx" >> $env:GITHUB_OUTPUT
 
-      - name: Build MXIX Package
+      - name: Build MSIX Package
         shell: pwsh
         env:
           MAKEPRI: ${{ steps.sdk.outputs.makepri }}
@@ -66,18 +67,18 @@ jobs:
           & $env:MAKEPRI createconfig /cf ".\bundle\priconfig.xml" /dq en-US /o
 
           & $env:MAKEPRI new /pr ".\bundle\win-arm64\publish" /cf ".\bundle\priconfig.xml" /mn ".\bundle\win-arm64\publish\AppxManifest.xml" /of ".\bundle\win-arm64\publish\resources.pri" /o
-          & $env:MAKEAPPX pack /d ".\bundle\win-arm64\publish" /p ".\bundle\msix\MakiDice_arm64.msix" /o
+          & $env:MAKEAPPX pack /d ".\bundle\win-arm64\publish" /p ".\bundle\msix\makidice-windows-arm64.msix" /o
 
           & $env:MAKEPRI new /pr ".\bundle\win-x64\publish" /cf ".\bundle\priconfig.xml" /mn ".\bundle\win-x64\publish\AppxManifest.xml" /of ".\bundle\win-x64\publish\resources.pri" /o
-          & $env:MAKEAPPX pack /d ".\bundle\win-x64\publish" /p ".\bundle\msix\MakiDice_x64.msix" /o
+          & $env:MAKEAPPX pack /d ".\bundle\win-x64\publish" /p ".\bundle\msix\makidice-windows-x64.msix" /o
 
-          & $env:MAKEAPPX bundle /d ".\bundle\msix" /p ".\bundle\MakiDice.msixbundle" /o
+          & $env:MAKEAPPX bundle /d ".\bundle\msix" /p ".\bundle\makidice-windows.msixbundle" /o
 
       - name: Upload MSIX Artifact
         uses: actions/upload-artifact@v6
         with:
-          name: MakiDice-msixbundle
-          path: .\bundle\MakiDice.msixbundle
+          name: makidice-windows-msixbundle
+          path: .\bundle\makidice-windows.msixbundle
           if-no-files-found: error
 
       - name: Clean Build
