@@ -5,15 +5,10 @@ name: Build Maki Dice (Windows)
 
 on:
   workflow_dispatch:
-  # push:
-  #   branches: [ main ]
-  # pull_request:
-  #   branches: [ main ]
 
 jobs:
   package:
     runs-on: windows-2022
-    # runs-on: windows-latest
 
     steps:
       - name: Checkout
