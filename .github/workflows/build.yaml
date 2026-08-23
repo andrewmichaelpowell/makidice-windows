@@ -1,36 +1,35 @@
-name: Build Windows Packages
+# Maki Dice (Windows)
+# github.com/andrewmichaelpowell
+
+name: Build Maki Dice (Windows)
 
 on:
-  workflow_dispatch:      # manual trigger button in the Actions tab
-  push:
-    tags:
-      - 'v*'              # also trigger on version tags, e.g. v1.9.4
+  workflow_dispatch:
+  # push:
+  #   branches: [ main ]
+  # pull_request:
+  #   branches: [ main ]
 
 jobs:
   package:
-    # Pin to windows-2022 if you hit arm64 SDK issues on windows-latest
-    # (see https://github.com/actions/runner-images/issues/13339)
     runs-on: windows-2022
 
     steps:
       - name: Checkout
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
 
-      - name: Setup .NET
+      - name: Configure .NET
         uses: actions/setup-dotnet@v4
         with:
           dotnet-version: '9.0.x'
 
-      # Adjust these publish flags to match whatever your local publish
-      # profile / .csproj settings currently produce — this assumes a
-      # self-contained, framework-dependent-false publish per RID.
-      - name: Publish win-x64
-        run: dotnet publish -c Release -r win-x64 --self-contained true
-
-      - name: Publish win-arm64
+      - name: Build arm64
         run: dotnet publish -c Release -r win-arm64 --self-contained true
 
-      - name: Locate MakePri and MakeAppx
+      - name: Build x64
+        run: dotnet publish -c Release -r win-x64 --self-contained true
+
+      - name: Configure MakeAppx & MakePri
         id: sdk
         shell: pwsh
         run: |
@@ -39,18 +38,13 @@ jobs:
                     Sort-Object { [version]$_.Name } -Descending |
                     Select-Object -First 1
 
-          if (-not $sdkBin) { throw "No versioned Windows SDK bin folder found under C:\Program Files (x86)\Windows Kits\10\bin" }
-
           $makepri = Join-Path $sdkBin.FullName "x64\MakePri.exe"
           $makeappx = Join-Path $sdkBin.FullName "x64\MakeAppx.exe"
-
-          if (-not (Test-Path $makepri))  { throw "MakePri.exe not found under $($sdkBin.FullName)" }
-          if (-not (Test-Path $makeappx)) { throw "MakeAppx.exe not found under $($sdkBin.FullName)" }
 
           "makepri=$makepri"   >> $env:GITHUB_OUTPUT
           "makeappx=$makeappx" >> $env:GITHUB_OUTPUT
 
-      - name: Assemble bundle layout and package
+      - name: Build MXIX Package
         shell: pwsh
         env:
           MAKEPRI: ${{ steps.sdk.outputs.makepri }}
@@ -79,31 +73,26 @@ jobs:
 
           & $env:MAKEAPPX bundle /d ".\bundle\msix" /p ".\bundle\MakiDice.msixbundle" /o
 
-      - name: Upload msixbundle artifact
-        uses: actions/upload-artifact@v4
+      - name: Upload MSIX Artifact
+        uses: actions/upload-artifact@v6
         with:
           name: MakiDice-msixbundle
           path: .\bundle\MakiDice.msixbundle
           if-no-files-found: error
 
-      # ---- Direct-download builds (single-file, zipped) ----------------
-      # The MSIX packaging above already consumed the multi-file publish
-      # output (it's copied into .\bundle before this point), so it's safe
-      # to clean and republish with different flags for the zip downloads.
-
-      - name: Clean previous publish output
+      - name: Clean Build
         shell: pwsh
         run: |
           if (Test-Path .\bin) { Remove-Item -Recurse -Force .\bin }
           if (Test-Path .\obj) { Remove-Item -Recurse -Force .\obj }
 
-      - name: Publish single-file win-arm64
+      - name: Build arm64
         run: dotnet publish -c Release -r win-arm64 --self-contained -p:PublishSingleFile=true -p:IncludeNativeLibrariesForSelfContained=true -p:EnableWindowsTargeting=true
 
-      - name: Publish single-file win-x64
+      - name: Build x64
         run: dotnet publish -c Release -r win-x64 --self-contained -p:PublishSingleFile=true -p:IncludeNativeLibrariesForSelfContained=true -p:EnableWindowsTargeting=true
 
-      - name: Zip single-file builds
+      - name: Build Packages
         shell: pwsh
         run: |
           Compress-Archive -Path (Get-ChildItem .\bin\Release\net9.0-windows\win-arm64\publish\* -File) `
@@ -111,15 +100,15 @@ jobs:
           Compress-Archive -Path (Get-ChildItem .\bin\Release\net9.0-windows\win-x64\publish\* -File) `
                             -DestinationPath .\bin\makidice-windows-x64.zip -Force
 
-      - name: Upload arm64 zip artifact
-        uses: actions/upload-artifact@v4
+      - name: Upload arm64 Artifact
+        uses: actions/upload-artifact@v6
         with:
           name: makidice-windows-arm64
           path: .\bin\makidice-windows-arm64.zip
           if-no-files-found: error
 
-      - name: Upload x64 zip artifact
-        uses: actions/upload-artifact@v4
+      - name: Upload x64 Artifact
+        uses: actions/upload-artifact@v6
         with:
           name: makidice-windows-x64
           path: .\bin\makidice-windows-x64.zip
