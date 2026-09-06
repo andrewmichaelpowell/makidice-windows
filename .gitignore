@@ -1,5 +1,4 @@
 bin/
-bundle/
 obj/
 .vs/
 *.user
