@@ -11,7 +11,7 @@
     <UseWindowsForms>true</UseWindowsForms>
     <RootNamespace>MakiDice</RootNamespace>
     <AssemblyName>MakiDice</AssemblyName>
-    <AssemblyVersion>2026.10.24.0</AssemblyVersion>
+    <AssemblyVersion>2026.10.22.0</AssemblyVersion>
     <ApplicationTitle>Maki Dice</ApplicationTitle>
     <Copyright>Copyright © 2026 Andrew Powell</Copyright>
     <ApplicationIcon>Assets\Icon.ico</ApplicationIcon>
