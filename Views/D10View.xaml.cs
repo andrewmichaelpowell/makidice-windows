@@ -28,17 +28,17 @@ public partial class D10View : UserControl
 
     private void UpdateSelectionStyles()
     {
-        var tealBrush = (Brush)Application.Current.Resources["TealBrush"];
+        var greenBrush = (Brush)Application.Current.Resources["GreenBrush"];
         var secondaryBrush = (Brush)Application.Current.Resources["SecondaryBackgroundBrush"];
         var labelBrush = (Brush)Application.Current.Resources["LabelBrush"];
 
-        DiceLabel.Foreground = _selected == 1 ? tealBrush : labelBrush;
-        DifficultyLabel.Foreground = _selected == 2 ? tealBrush : labelBrush;
+        DiceLabel.Foreground = _selected == 1 ? greenBrush : labelBrush;
+        DifficultyLabel.Foreground = _selected == 2 ? greenBrush : labelBrush;
 
-        SelectDiceButton.Background = _selected == 1 ? tealBrush : secondaryBrush;
+        SelectDiceButton.Background = _selected == 1 ? greenBrush : secondaryBrush;
         SelectDiceButton.Foreground = _selected == 1 ? Brushes.White : labelBrush;
 
-        SelectDifficultyButton.Background = _selected == 2 ? tealBrush : secondaryBrush;
+        SelectDifficultyButton.Background = _selected == 2 ? greenBrush : secondaryBrush;
         SelectDifficultyButton.Foreground = _selected == 2 ? Brushes.White : labelBrush;
     }
 

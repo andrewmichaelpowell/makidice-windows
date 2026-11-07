@@ -10,8 +10,8 @@
                 <ResourceDictionary Source="Styles/DiceButtonStyle.xaml" />
             </ResourceDictionary.MergedDictionaries>
 
-            <SolidColorBrush x:Key="TealBrush" Color="#FF30B0C7" />
-            <SolidColorBrush x:Key="OrangeBrush" Color="#FFFF9500" />
+            <SolidColorBrush x:Key="GreenBrush" Color="#FF045030" />
+            <SolidColorBrush x:Key="OrangeBrush" Color="#FFF05C22" />
 
         </ResourceDictionary>
     </Application.Resources>

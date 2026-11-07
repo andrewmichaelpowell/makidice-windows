@@ -50,7 +50,7 @@
                         Background="{DynamicResource SecondaryBackgroundBrush}" Foreground="{DynamicResource LabelBrush}"
                         Content="1d100" />
                 <Button Click="OpenD10_Click" Margin="4" Style="{StaticResource DiceButtonStyle}"
-                        Background="{StaticResource TealBrush}" Foreground="White"
+                        Background="{StaticResource GreenBrush}" Foreground="White"
                         Content="D10" />
             </UniformGrid>
         </StackPanel>
