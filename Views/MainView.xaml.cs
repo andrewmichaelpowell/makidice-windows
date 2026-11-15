@@ -98,7 +98,31 @@ public partial class MainView : UserControl
         }
     }
 
-    private void Roll_Click(object sender, RoutedEventArgs e)
+    private void Backspace_Click(object sender, RoutedEventArgs e)
+    {
+        if (_resetInput != 0) return;
+        if (_editSide == 2)
+        {
+            if (_diceType.Length == 0)
+            {
+                _editSide = 1;
+                ResultText.Text = _diceNumber;
+            }
+            else
+            {
+                _diceType = _diceType[..^1];
+                ResultText.Text = $"{_diceNumber}d{_diceType}";
+            }
+        }
+        else if (_diceNumber.Length > 0)
+        {
+            _diceNumber = _diceNumber[..^1];
+            ResultText.Text = _diceNumber;
+            if (_diceNumber.Length == 0) _resetInput = 1;
+        }
+    }
+
+        private void Roll_Click(object sender, RoutedEventArgs e)
     {
         if (_diceNumber != "" && _diceType != "")
         {

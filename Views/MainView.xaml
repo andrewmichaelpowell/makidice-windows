@@ -97,9 +97,12 @@
                 <Button Click="Zero_Click" Margin="4" Style="{StaticResource DiceButtonStyle}"
                         Background="{DynamicResource SecondaryBackgroundBrush}" Foreground="{DynamicResource LabelBrush}"
                         Content="0" />
-                <Button Click="Roll_Click" Margin="4" Style="{StaticResource DiceButtonStyle}"
+                <Button Click="Backspace_Click" Margin="4" Style="{StaticResource DiceButtonStyle}"
                         Background="{StaticResource OrangeBrush}" Foreground="White"
-                        Content="Roll" />
+                        AutomationProperties.Name="Delete">
+                    <!-- The Backspace glyph from Windows' own icon font. -->
+                    <TextBlock Text="&#xE750;" FontFamily="Segoe Fluent Icons, Segoe MDL2 Assets" FontSize="24" />
+                </Button>
             </UniformGrid>
         </StackPanel>
     </Grid>
