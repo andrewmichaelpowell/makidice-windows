@@ -7,6 +7,46 @@
         MinWidth="500" MinHeight="780"
         Background="{DynamicResource WindowBackgroundBrush}">
     <Grid>
-        <ContentControl x:Name="RootContent" />
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+
+        <ContentControl x:Name="MainContent" Grid.Row="0" />
+        <ContentControl x:Name="D10Content" Grid.Row="0" Visibility="Collapsed" />
+
+        <Border Grid.Row="1" HorizontalAlignment="Center" Margin="0,0,0,16"
+                Padding="4" CornerRadius="26"
+                Background="{DynamicResource SecondaryBackgroundBrush}">
+            <Grid Width="160" Height="44">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+                <Border x:Name="PageIndicator" Grid.Column="0"
+                        CornerRadius="22" Background="{StaticResource OrangeBrush}" />
+                <Button x:Name="MainPageButton" Grid.Column="0" Click="MainPage_Click"
+                        Style="{StaticResource ChooserItemStyle}"
+                        AutomationProperties.Name="Calculator">
+                    <Viewbox Width="26" Height="26">
+                        <Canvas Width="708" Height="708">
+                            <Path x:Name="DiceIcon"
+                                  Fill="{DynamicResource LabelBrush}"
+                                  Data="M308.88,618.92 L512,266.83 L715.12,618.92 Z M481.53,261.6 L288.41,596.37 L210.27,332.08 Z M813.73,332.08 L735.59,596.37 L542.47,261.6 Z M512,867.16 L316.53,647.92 L707.47,647.92 Z M291.79,280.94 L497.5,159.24 L497.5,227.49 Z M526.5,227.49 L526.5,159.24 L732.21,280.94 Z M206.25,671.71 L206.25,420.77 L267.35,627.44 Z M756.65,627.44 L817.75,420.77 L817.75,671.71 Z M437.38,827.04 L219.05,698.25 L281.93,652.69 Z M742.07,652.69 L804.95,698.25 L586.62,827.04 Z">
+                                <Path.RenderTransform>
+                                    <TranslateTransform X="-158" Y="-159.2" />
+                                </Path.RenderTransform>
+                            </Path>
+                        </Canvas>
+                    </Viewbox>
+                </Button>
+                <Button x:Name="D10PageButton" Grid.Column="1" Click="D10Page_Click"
+                        Style="{StaticResource ChooserItemStyle}"
+                        AutomationProperties.Name="D10">
+                    <TextBlock Text="D10" FontSize="19" FontWeight="SemiBold"
+                               Foreground="{DynamicResource LabelBrush}" />
+                </Button>
+            </Grid>
+        </Border>
     </Grid>
 </Window>

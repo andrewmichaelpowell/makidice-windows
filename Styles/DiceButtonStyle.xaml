@@ -13,9 +13,9 @@
                     <Grid>
                         <Border x:Name="Bg"
                                 Background="{TemplateBinding Background}"
-                                CornerRadius="12" />
+                                CornerRadius="25" />
                         <Border x:Name="PressOverlay"
-                                CornerRadius="12"
+                                CornerRadius="25"
                                 Background="Black"
                                 Opacity="0" />
                         <Viewbox Margin="6,4" StretchDirection="DownOnly">
@@ -32,6 +32,25 @@
                             <Setter TargetName="Bg" Property="Opacity" Value="0.5" />
                         </Trigger>
                     </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style x:Key="ChooserItemStyle" TargetType="Button">
+        <Setter Property="Cursor" Value="Hand" />
+        <Setter Property="FocusVisualStyle" Value="{x:Null}" />
+        <Setter Property="Background" Value="Transparent" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="Button">
+                    <Border Background="Transparent">
+                        <Viewbox Margin="8,4" StretchDirection="DownOnly">
+                            <ContentPresenter HorizontalAlignment="Center"
+                                              VerticalAlignment="Center"
+                                              TextElement.Foreground="{TemplateBinding Foreground}" />
+                        </Viewbox>
+                    </Border>
                 </ControlTemplate>
             </Setter.Value>
         </Setter>

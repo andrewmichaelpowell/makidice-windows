@@ -11,8 +11,6 @@ namespace MakiDice.Views;
 
 public partial class D10View : UserControl
 {
-    public event EventHandler? BackRequested;
-
     private int _diceValue;
     private int _difficultyValue;
     private int _successesValue;
@@ -28,18 +26,13 @@ public partial class D10View : UserControl
 
     private void UpdateSelectionStyles()
     {
-        var greenBrush = (Brush)Application.Current.Resources["GreenBrush"];
-        var secondaryBrush = (Brush)Application.Current.Resources["SecondaryBackgroundBrush"];
         var labelBrush = (Brush)Application.Current.Resources["LabelBrush"];
+        var dimmedBrush = labelBrush.Clone();
+        dimmedBrush.Opacity = 0.6;
 
-        DiceLabel.Foreground = _selected == 1 ? greenBrush : labelBrush;
-        DifficultyLabel.Foreground = _selected == 2 ? greenBrush : labelBrush;
-
-        SelectDiceButton.Background = _selected == 1 ? greenBrush : secondaryBrush;
-        SelectDiceButton.Foreground = _selected == 1 ? Brushes.White : labelBrush;
-
-        SelectDifficultyButton.Background = _selected == 2 ? greenBrush : secondaryBrush;
-        SelectDifficultyButton.Foreground = _selected == 2 ? Brushes.White : labelBrush;
+        Grid.SetColumn(SelectionIndicator, _selected - 1);
+        SelectDiceButton.Foreground = _selected == 1 ? Brushes.White : dimmedBrush;
+        SelectDifficultyButton.Foreground = _selected == 2 ? Brushes.White : dimmedBrush;
     }
 
     private void SelectDice_Click(object sender, RoutedEventArgs e)
@@ -99,10 +92,5 @@ public partial class D10View : UserControl
         SuccessesValueText.Text = "";
         await Task.Delay(100);
         SuccessesValueText.Text = _successesValue.ToString();
-    }
-
-    private void Back_Click(object sender, RoutedEventArgs e)
-    {
-        BackRequested?.Invoke(this, EventArgs.Empty);
     }
 }

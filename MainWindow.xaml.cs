@@ -2,25 +2,66 @@
 // github.com/andrewmichaelpowell
 
 using System.Windows;
+using System.Windows.Controls;
 using MakiDice.Views;
+using Microsoft.Win32;
 
 namespace MakiDice;
 
 public partial class MainWindow : Window
 {
-    private readonly MainView _mainView;
-    private readonly D10View _d10View;
+    private const string SettingsKey = @"Software\Maki Dice";
+    private const string SelectedTabValue = "SelectedTab";
 
     public MainWindow()
     {
         InitializeComponent();
 
-        _mainView = new MainView();
-        _mainView.OpenD10Requested += (_, _) => RootContent.Content = _d10View;
+        MainContent.Content = new MainView();
+        D10Content.Content = new D10View();
 
-        _d10View = new D10View();
-        _d10View.BackRequested += (_, _) => RootContent.Content = _mainView;
+        ShowPage(LoadSelectedTab());
+    }
 
-        RootContent.Content = _mainView;
+    private void MainPage_Click(object sender, RoutedEventArgs e) => SelectPage(0);
+
+    private void D10Page_Click(object sender, RoutedEventArgs e) => SelectPage(1);
+
+    private void SelectPage(int index)
+    {
+        ShowPage(index);
+        SaveSelectedTab(index);
+    }
+
+    private void ShowPage(int index)
+    {
+        MainContent.Visibility = index == 0 ? Visibility.Visible : Visibility.Collapsed;
+        D10Content.Visibility = index == 1 ? Visibility.Visible : Visibility.Collapsed;
+        Grid.SetColumn(PageIndicator, index);
+    }
+
+    private static int LoadSelectedTab()
+    {
+        try
+        {
+            using var key = Registry.CurrentUser.OpenSubKey(SettingsKey);
+            return key?.GetValue(SelectedTabValue) is int value && value == 1 ? 1 : 0;
+        }
+        catch
+        {
+            return 0;
+        }
+    }
+
+    private static void SaveSelectedTab(int index)
+    {
+        try
+        {
+            using var key = Registry.CurrentUser.CreateSubKey(SettingsKey);
+            key.SetValue(SelectedTabValue, index, RegistryValueKind.DWord);
+        }
+        catch
+        {
+        }
     }
 }

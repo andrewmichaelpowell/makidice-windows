@@ -10,8 +10,6 @@ namespace MakiDice.Views;
 
 public partial class MainView : UserControl
 {
-    public event EventHandler? OpenD10Requested;
-
     private string _diceNumber = "";
     private string _diceType = "";
     private int _editSide = 1;
@@ -116,10 +114,5 @@ public partial class MainView : UserControl
             _editSide = 1;
             _resetInput = 1;
         }
-    }
-
-    private void OpenD10_Click(object sender, RoutedEventArgs e)
-    {
-        OpenD10Requested?.Invoke(this, EventArgs.Empty);
     }
 }

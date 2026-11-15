@@ -10,7 +10,6 @@
                 <ResourceDictionary Source="Styles/DiceButtonStyle.xaml" />
             </ResourceDictionary.MergedDictionaries>
 
-            <SolidColorBrush x:Key="GreenBrush" Color="#FF045030" />
             <SolidColorBrush x:Key="OrangeBrush" Color="#FFF05C22" />
 
         </ResourceDictionary>
