@@ -43,7 +43,7 @@
                 <Button x:Name="D10PageButton" Grid.Column="1" Click="D10Page_Click"
                         Style="{StaticResource ChooserItemStyle}"
                         AutomationProperties.Name="D10">
-                    <TextBlock Text="D10" FontSize="19" FontWeight="SemiBold"
+                    <TextBlock x:Name="D10Label" Text="D10" FontSize="19" FontWeight="SemiBold"
                                Foreground="{DynamicResource LabelBrush}" />
                 </Button>
             </Grid>

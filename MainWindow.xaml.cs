@@ -3,6 +3,8 @@
 
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Media;
+using System.Windows.Shapes;
 using MakiDice.Views;
 using Microsoft.Win32;
 
@@ -38,6 +40,17 @@ public partial class MainWindow : Window
         MainContent.Visibility = index == 0 ? Visibility.Visible : Visibility.Collapsed;
         D10Content.Visibility = index == 1 ? Visibility.Visible : Visibility.Collapsed;
         Grid.SetColumn(PageIndicator, index);
+
+        if (index == 0)
+        {
+            DiceIcon.Fill = Brushes.White;
+            D10Label.SetResourceReference(TextBlock.ForegroundProperty, "LabelBrush");
+        }
+        else
+        {
+            DiceIcon.SetResourceReference(Shape.FillProperty, "LabelBrush");
+            D10Label.Foreground = Brushes.White;
+        }
     }
 
     private static int LoadSelectedTab()
